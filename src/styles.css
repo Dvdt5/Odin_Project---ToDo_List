@@ -27,6 +27,7 @@ body {
 
     display: grid;
     grid-template-rows: 1fr 4fr;
+    gap: 48px;
 }
 
 #logo {
@@ -34,6 +35,22 @@ body {
     font-size: 2em;
 }
 
+#nav {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.nav-btn {
+    background-color: transparent;
+    border: 0;
+    font-size: 1.5em;
+}
+
+.nav-btn:hover {
+    background-color: gray
+}
 
 
 #content-header {
@@ -47,4 +64,64 @@ body {
 
 #content {
     background-color: cadetblue;
+}
+
+#popUpModal {
+    width: 30vw;
+    height: 70vh;
+    background-color: whitesmoke;
+    position: relative;
+    top: 15vh;
+    margin: auto;
+    box-shadow: 0px -25px 20px -20px rgba(0, 0, 0, 0.45), 25px 0 20px -20px rgba(0, 0, 0, 0.45), 0px 25px 20px -20px rgba(0, 0, 0, 0.45), -25px 0 20px -20px rgba(0, 0, 0, 0.45);
+    border-radius: 20px;
+}
+
+#darkenedBackground {
+    background-color: rgba(100, 100, 100, 0.5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+}
+
+
+/* Create Project Form*/
+
+#create-project-form {
+    width: 90%;
+    height: 90%;
+    text-align: center;
+    align-items: center;
+    margin: auto;
+    font-size: 2em;
+    font-weight: bold;
+
+    display: grid;
+    grid-template-rows: 6fr 1fr 1fr;
+    gap: 16px;
+}
+
+.create-project-form-btn {
+    padding: 16px;
+    border-radius: 20px;
+    border: 0;
+    background-color: rgb(192, 192, 192);
+
+}
+
+
+.create-project-form-btn:hover {
+    background-color: cornflowerblue;
+    color: white;
+}
+
+#create-form-cancel-btn:hover {
+    background-color: rgb(255, 47, 47);
+}
+
+#project-name-input {
+    padding: 16px;
+    margin-top: 32px;
+    width: 60%;
+    font-size: large;
 }
