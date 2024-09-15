@@ -82,6 +82,7 @@ body {
     width: 100vw;
     height: 100vh;
     position: fixed;
+    z-index: 1;
 }
 
 
@@ -124,4 +125,85 @@ body {
     margin-top: 32px;
     width: 60%;
     font-size: large;
+}
+
+
+/* Projects Cards and container */
+
+#projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+    gap: 16px;
+}
+
+
+.project-card {
+    padding: 16px;
+    background-color: white;
+    width: 30%;
+    height: 230px;
+    min-width: 250px;
+
+    position: relative;
+    border-radius: 10px;
+}
+
+.project-card:hover {
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
+}
+
+.card-btn {
+    background-color: rgb(192, 192, 192);
+    width: 4em;
+    padding: 8px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.project-name {
+    font-size: 2em;
+    text-align: center;
+    width: 100%;
+
+
+    position: absolute;
+    top: 0;
+}
+.project-nearest-task::before {
+    content: "Current Task: ";
+    font-weight: bold;
+    color: chocolate;
+}
+
+.project-nearest-task {
+    width: fit-content;
+    font-size: 20px;
+    color: brown;
+
+    position: absolute;
+    top: 35%;
+}
+
+.project-details-btn {
+    position: absolute;
+    bottom: 10%;
+    right: 27%;
+}
+
+.project-details-btn:hover {
+    background-color: cornflowerblue;
+    color: white;
+}
+
+.del-project-btn {
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+}
+
+.del-project-btn:hover {
+    background-color: rgb(255, 47, 47);
+    color: white;
 }
