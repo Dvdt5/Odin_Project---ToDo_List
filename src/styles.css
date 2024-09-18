@@ -160,6 +160,7 @@ body {
     text-align: center;
     font-size: 18px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .project-name {
@@ -206,4 +207,17 @@ body {
 .del-project-btn:hover {
     background-color: rgb(255, 47, 47);
     color: white;
+}
+
+
+.no-projects-text {
+    font-size: 36px;
+}
+
+
+/* Create task from and inputs*/
+
+#create-task-form {
+    padding: 16px;
+    
 }
