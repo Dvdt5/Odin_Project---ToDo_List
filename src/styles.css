@@ -219,5 +219,65 @@ body {
 
 #create-task-form {
     padding: 16px;
-    
+    padding-top: 64px;
+    text-align: center;
+    height: 85%;
+    font-size: large;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#create-task-btn-container {
+    display: flex;
+    gap: 16px;
+
+    position: absolute;
+    bottom: 5%;
+    right: 10%;
+}
+
+#task-input-content {
+    max-width: 80%;
+    min-width: 70%;
+    max-height: 180px;
+    min-height: 50px;
+    height: 100px;
+}
+
+#task-input-title {
+    padding: 8px;
+    width: 50%;
+}
+
+#create-task-btn:hover {
+    background-color: cornflowerblue;
+    color: white;
+}
+
+#create-task-cancel-btn:hover {
+    background-color: rgb(255, 47, 47);
+    color: white;
+}
+
+#project-select-input {
+    width: 50%;
+    margin-top: 8px;
+    padding: 8px;
+    background-color: white;
+    border: 2px solid gray;
+}
+
+#project-select-input:hover {
+    background-color: whitesmoke;
+}
+
+.task-create-btns {
+    font-size: large;
+    width: 6em;
+    padding: 16px;
+    border-radius: 20px;
+    border: 0;
+    background-color: rgb(192, 192, 192);
 }

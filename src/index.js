@@ -26,5 +26,6 @@ createTaskBtn.addEventListener("click", ()=>{
 
 projectsBtn.addEventListener("click", ()=>{
     contentContainer.innerHTML = "";
+    document.getElementById("content-header").textContent = "Projects";
     contentContainer.appendChild(listProjects());
 })

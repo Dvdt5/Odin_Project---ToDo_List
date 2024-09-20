@@ -51,6 +51,7 @@ export default function listProjects() {
     });
 
     if (storedProjects.length === 0) {
+        document.getElementById("content-header").textContent = "Projects";
         const emptyPageText = document.createElement("p");
         emptyPageText.textContent = "There is no projects to do!"
         emptyPageText.classList.add("no-projects-text");
