@@ -1,9 +1,17 @@
 import projectDetails from "./projectDetails";
 
 
-function deleteProject(id) {
+function deleteProject(id, tasks) {
     let storedProjects = JSON.parse(localStorage.getItem("Projects"));
+    let storedTasks = JSON.parse(localStorage.getItem("Tasks")) || [];
+
+    tasks.forEach((task)=>{
+        storedTasks = storedTasks.filter((taskStored)=> !(taskStored === task));
+    });
+      
     storedProjects = storedProjects.filter((project)=>!(project.id === id));
+
+    localStorage.setItem("Tasks", JSON.stringify(storedTasks));
     localStorage.setItem("Projects",JSON.stringify(storedProjects));
     document.getElementById("content").innerHTML = "";
     document.getElementById("content").appendChild(listProjects());
@@ -33,7 +41,7 @@ export default function listProjects() {
         projectDelBtn.classList.add("card-btn");
         projectDelBtn.classList.add("del-project-btn");
         projectDelBtn.id = id;
-        projectDelBtn.addEventListener("click",()=>{deleteProject(id)});
+        projectDelBtn.addEventListener("click",()=>{deleteProject(id, tasks)});
 
         const projectDetailsBtn = document.createElement("div");
         projectDetailsBtn.textContent = "Tasks";
