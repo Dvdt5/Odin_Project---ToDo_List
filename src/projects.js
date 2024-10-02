@@ -2,16 +2,13 @@ import projectDetails from "./projectDetails";
 
 
 function deleteProject(id, tasks) {
-    let storedProjects = JSON.parse(localStorage.getItem("Projects"));
-    let storedTasks = JSON.parse(localStorage.getItem("Tasks")) || [];
+    let tasksLeft = JSON.parse(localStorage.getItem("Tasks")).filter((task)=>!(tasks.includes(task.taskTitle)));
 
-    tasks.forEach((task)=>{
-        storedTasks = storedTasks.filter((taskStored)=> !(taskStored === task));
-    });
+    let storedProjects = JSON.parse(localStorage.getItem("Projects"));
       
     storedProjects = storedProjects.filter((project)=>!(project.id === id));
 
-    localStorage.setItem("Tasks", JSON.stringify(storedTasks));
+    localStorage.setItem("Tasks", JSON.stringify(tasksLeft));
     localStorage.setItem("Projects",JSON.stringify(storedProjects));
     document.getElementById("content").innerHTML = "";
     document.getElementById("content").appendChild(listProjects());

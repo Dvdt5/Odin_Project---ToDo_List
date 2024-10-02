@@ -251,7 +251,7 @@ body {
     width: 50%;
 }
 
-#create-task-btn:hover {
+#create-task-form-btn:hover {
     background-color: cornflowerblue;
     color: white;
 }
@@ -327,10 +327,15 @@ body {
     bottom: 5%;
     right: 5%;
 }
+.del-task-btn-card:hover {
+    background-color: rgb(255, 47, 47);
+    color: white;
+}
 
 .toggle-status-btn {
-    background-color: rgb(192, 192, 192);
-    width: 4em;
+    background-color: rgb(255, 47, 47);
+    color: white;
+    width: 6em;
     padding: 8px;
     text-align: center;
     font-size: 18px;
@@ -342,6 +347,11 @@ body {
     bottom: 5%;
     right: 25%;
 }
+.task-done {
+    background-color: rgb(0, 211, 0);
+    color: white;
+}
+
 
 .task-card-date {
     background-color: rgb(192, 192, 192);

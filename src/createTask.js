@@ -48,7 +48,7 @@ export default function createTaskForm () {
         <input type="date" id="task-date" required>
     </div>
     <div id="create-task-btn-container">
-        <button type="submit" class="task-create-btns" id="create-task-btn">Create</button>
+        <button type="submit" class="task-create-btns" id="create-task-form-btn">Create</button>
     </div>
     `;
 
@@ -82,7 +82,8 @@ export default function createTaskForm () {
             taskTitle: taskTitleInput.value,
             taskDetail: taskDetailInput.value,
             taskDate: taskDate.value,
-            taskAssignedProject: taskAssignedProjectInput.value
+            taskAssignedProject: taskAssignedProjectInput.value,
+            isDone: false
         };
         storedTasks.push(tempObj);
         localStorage.setItem("Tasks",JSON.stringify(storedTasks));
