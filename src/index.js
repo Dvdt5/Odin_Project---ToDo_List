@@ -32,8 +32,8 @@ projectsBtn.addEventListener("click", ()=>{
 
 
 
-// window.onload = function (){
-//     contentContainer.innerHTML = "";
-//     document.getElementById("content-header").textContent = "Projects";
-//     contentContainer.appendChild(listProjects());
-// }
+window.onload = function (){
+    contentContainer.innerHTML = "";
+    document.getElementById("content-header").textContent = "Projects";
+    contentContainer.appendChild(listProjects());
+}
