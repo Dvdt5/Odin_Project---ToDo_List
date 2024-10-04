@@ -20,10 +20,10 @@ body {
 /*Side bar and Navigation*/
 
 #side-bar {
-    background-color: cornflowerblue;
+    background-color: rgb(140, 140, 255);
     grid-row: 1 / 3;
     min-width: 220px;
-    border-right: 5px solid black;
+    
 
     display: grid;
     grid-template-rows: 1fr 4fr;
@@ -33,6 +33,9 @@ body {
 #logo {
     margin: auto;
     font-size: 2em;
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 #nav {
@@ -59,13 +62,16 @@ body {
     background-color: white;
     padding: 0 16px;
     font-size: 3em;
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 
     display: grid;
     align-items: center;
 }
 
 #content {
-    background-color: rgb(177, 177, 255);
+    background-color: rgb(213, 213, 255);
     box-shadow: inset 0 0 10px black;
 }
 
@@ -176,15 +182,15 @@ body {
     top: 0;
 }
 .project-nearest-task::before {
-    content: "Upcoming Task: ";
+    content: "Last Assigned Task: ";
     font-weight: bold;
-    color: chocolate;
+    color: rgb(93, 93, 255);
 }
 
 .project-nearest-task {
     width: fit-content;
     font-size: 20px;
-    color: brown;
+    color: rgb(147, 147, 255);
 
     position: absolute;
     top: 35%;

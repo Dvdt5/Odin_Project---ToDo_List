@@ -95,7 +95,7 @@ export default function createTaskForm () {
 
         storedProjects.forEach((project)=>{
             if (project.name === taskAssignedProjectInput.value) {
-                project.tasks.push(taskTitleInput.value);
+                project.tasks[0]= taskTitleInput.value;
             }
         });
 
