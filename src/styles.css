@@ -1,377 +1,77 @@
-* { 
-    font-family: sans-serif;
+* {
+    font-family: "Arvo", sans-serif;
 }
 
 body {
-    background-color: brown;
+    background-color: wheat;
     margin: 0;
 }
 
-#container-grid {
-    height: 100vh;
-    width: 100vw;
-
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    grid-template-rows: 1fr 4fr;
-}
-
-
-/*Side bar and Navigation*/
-
-#side-bar {
-    background-color: rgb(140, 140, 255);
-    grid-row: 1 / 3;
-    min-width: 220px;
+#container {
+    background-color: burlywood;
     
-
+    width: calc(70vw - 48px);
+    height: 65vh;
+    padding: 16px;
+    
     display: grid;
-    grid-template-rows: 1fr 4fr;
-    gap: 48px;
-}
-
-#logo {
-    margin: auto;
-    font-size: 2em;
-    font-family: "Anton", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-#nav {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 8fr;
     gap: 16px;
-}
 
-.nav-btn {
-    background-color: transparent;
-    border: 0;
-    font-size: 1.5em;
-    padding: 10px;
-}
-
-.nav-btn:hover {
-    color: white;
-    background-color: rgba(177, 177, 255, 0.5);
-}
-
-
-#content-header {
-    background-color: white;
-    padding: 0 16px;
-    font-size: 3em;
-    font-family: "Anton", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-
-    display: grid;
-    align-items: center;
-}
-
-#content {
-    background-color: rgb(213, 213, 255);
-    box-shadow: inset 0 0 10px black;
-}
-
-#popUpModal {
-    width: 30vw;
-    height: 70vh;
-    background-color: whitesmoke;
-    position: relative;
-    top: 15vh;
-    margin: auto;
-    box-shadow: 0px -25px 20px -20px rgba(0, 0, 0, 0.45), 25px 0 20px -20px rgba(0, 0, 0, 0.45), 0px 25px 20px -20px rgba(0, 0, 0, 0.45), -25px 0 20px -20px rgba(0, 0, 0, 0.45);
-    border-radius: 20px;
-}
-
-#darkenedBackground {
-    background-color: rgba(100, 100, 100, 0.5);
-    width: 100vw;
-    height: 100vh;
     position: fixed;
-    z-index: 1;
+    top: 15vh;
+    left: 15vw;
 }
 
+#projects-container, #tasks-container {
+    background-color: blanchedalmond;
+    overflow-y: scroll;
+}
 
-/* Create Project Form*/
+/* Project Container */
 
-#create-project-form {
-    width: 90%;
-    height: 90%;
-    text-align: center;
+#projects-container-header {
+    background-color: rgb(255, 219, 169);
+    font-size: larger;
+
+    padding-left: 1em;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+#projects-container-header-createproject-btn {
+    background-color: rgb(101, 101, 255);
+    color: white;
+    cursor: pointer;
+
+    padding: 1em;
+
+    display: flex;
     align-items: center;
-    margin: auto;
-    font-size: 2em;
-    font-weight: bold;
-
-    display: grid;
-    grid-template-rows: 6fr 1fr 1fr;
-    gap: 16px;
 }
 
-.create-project-form-btn {
-    padding: 16px;
-    border-radius: 20px;
-    border: 0;
-    background-color: rgb(192, 192, 192);
-
+.project-list-item {
+   background-color: rgb(153, 125, 87);
+   color: rgb(255, 200, 123);
+   font-weight: bold;
+   cursor: pointer;
+   
+   height: 2em;
+   padding: 1em;
+   
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
 }
 
-
-.create-project-form-btn:hover {
-    background-color: cornflowerblue;
-    color: white;
+.project-list-item:hover {
+    color: rgb(153, 125, 87);
+    background-color: rgb(255, 200, 123);
 }
 
-#create-form-cancel-btn:hover {
-    background-color: rgb(255, 47, 47);
-}
-
-#project-name-input {
-    padding: 16px;
-    margin-top: 32px;
-    width: 60%;
-    font-size: large;
-}
-
-
-/* Projects Cards and container */
-
-#projects-container {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 30px;
-    gap: 16px;
-}
-
-
-.project-card {
-    padding: 16px;
-    background-color: white;
-    width: 30%;
-    height: 230px;
-    min-width: 250px;
-
-    position: relative;
-    border-radius: 10px;
-}
-
-.project-card:hover {
-    box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
-}
-
-.card-btn {
-    background-color: rgb(192, 192, 192);
-    width: 4em;
-    padding: 8px;
-    text-align: center;
-    font-size: 18px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.project-name {
-    font-size: 2em;
-    text-align: center;
-    width: 100%;
-
-
-    position: absolute;
-    top: 0;
-}
-.project-nearest-task::before {
-    content: "Last Assigned Task: ";
-    font-weight: bold;
-    color: rgb(93, 93, 255);
-}
-
-.project-nearest-task {
-    width: fit-content;
-    font-size: 20px;
-    color: rgb(147, 147, 255);
-
-    position: absolute;
-    top: 35%;
-}
-
-.project-details-btn {
-    position: absolute;
-    bottom: 10%;
-    right: 27%;
-}
-
-.project-details-btn:hover {
-    background-color: cornflowerblue;
-    color: white;
-}
-
-.del-project-btn {
-    position: absolute;
-    bottom: 10%;
-    right: 5%;
-}
-
-.del-project-btn:hover {
-    background-color: rgb(255, 47, 47);
-    color: white;
-}
-
-
-.no-projects-text {
-    font-size: 36px;
-}
-
-
-/* Create task from and inputs*/
-
-#create-task-form {
-    padding: 16px;
-    padding-top: 64px;
-    text-align: center;
-    height: 85%;
-    font-size: large;
-
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-#create-task-btn-container {
-    display: flex;
-    gap: 16px;
-
-    position: absolute;
-    bottom: 5%;
-    right: 10%;
-}
-
-#task-input-content {
-    max-width: 80%;
-    min-width: 70%;
-    max-height: 180px;
-    min-height: 50px;
-    height: 100px;
-}
-
-#task-input-title {
-    padding: 8px;
-    width: 50%;
-}
-
-#create-task-form-btn:hover {
-    background-color: cornflowerblue;
-    color: white;
-}
-
-#create-task-cancel-btn:hover {
-    background-color: rgb(255, 47, 47);
-    color: white;
-}
-
-#project-select-input {
-    width: 50%;
-    margin-top: 8px;
-    padding: 8px;
-    background-color: white;
-    border: 2px solid gray;
-}
-
-#project-select-input:hover {
-    background-color: whitesmoke;
-}
-
-.task-create-btns {
-    font-size: large;
-    width: 6em;
-    padding: 16px;
-    border-radius: 20px;
-    border: 0;
-    background-color: rgb(192, 192, 192);
-}
-
-
-/* Task Cards and container */
-
-#tasks-container {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 30px;
-    gap: 16px;
-}
-
-.task-card {
-    padding: 16px;
-    background-color: white;
-    width: 30%;
-    min-height: 230px;
-    min-width: 250px;
-
-    position: relative;
-    border-radius: 10px;
-}
-
-.task-card:hover {
-    box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px;
-}
-
-.task-card-title {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-
-.del-task-btn-card {
-    background-color: rgb(192, 192, 192);
-    width: 4em;
-    padding: 8px;
-    text-align: center;
-    font-size: 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    
-
-    position: absolute;
-    bottom: 5%;
-    right: 5%;
-}
-.del-task-btn-card:hover {
-    background-color: rgb(255, 47, 47);
-    color: white;
-}
-
-.toggle-status-btn {
-    background-color: rgb(255, 47, 47);
-    color: white;
-    width: 6em;
-    padding: 8px;
-    text-align: center;
-    font-size: 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    
-
-    position: absolute;
-    bottom: 5%;
-    right: 25%;
-}
-.task-done {
-    background-color: rgb(0, 211, 0);
-    color: white;
-}
-
-
-.task-card-date {
-    background-color: rgb(192, 192, 192);
-    width: 6em;
-    padding: 8px;
-    text-align: center;
-    font-size: 18px;
-    border-radius: 5px;
-    
-
-    position: absolute;
-    bottom: 0;
-    left: 5%;
+/* Task Container */
+#tasks-container-header {
+    background-color: rgb(255, 219, 169);
 }

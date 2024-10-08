@@ -14,26 +14,26 @@ const popUpsContainer = document.getElementById("pop-ups");
 const contentContainer = document.getElementById("content");
 
 
-createProjectBtn.addEventListener("click", ()=> {
-    popUpsContainer.innerHTML = "";
-    popUpsContainer.appendChild(createProjectForm());
-});
+// createProjectBtn.addEventListener("click", ()=> {
+//     popUpsContainer.innerHTML = "";
+//     popUpsContainer.appendChild(createProjectForm());
+// });
 
-createTaskBtn.addEventListener("click", ()=>{
-    popUpsContainer.innerHTML = "";
-    popUpsContainer.appendChild(createTaskForm());
-})
+// createTaskBtn.addEventListener("click", ()=>{
+//     popUpsContainer.innerHTML = "";
+//     popUpsContainer.appendChild(createTaskForm());
+// })
 
-projectsBtn.addEventListener("click", ()=>{
-    contentContainer.innerHTML = "";
-    document.getElementById("content-header").textContent = "Projects";
-    contentContainer.appendChild(listProjects());
-})
+// projectsBtn.addEventListener("click", ()=>{
+//     contentContainer.innerHTML = "";
+//     document.getElementById("content-header").textContent = "Projects";
+//     contentContainer.appendChild(listProjects());
+// })
 
 
 
-window.onload = function (){
-    contentContainer.innerHTML = "";
-    document.getElementById("content-header").textContent = "Projects";
-    contentContainer.appendChild(listProjects());
-}
+// window.onload = function (){
+//     contentContainer.innerHTML = "";
+//     document.getElementById("content-header").textContent = "Projects";
+//     contentContainer.appendChild(listProjects());
+// }
