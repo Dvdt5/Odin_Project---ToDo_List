@@ -30,8 +30,7 @@ body {
 }
 
 /* Project Container */
-
-#projects-container-header {
+#projects-container-header{
     background-color: rgb(255, 219, 169);
     font-size: larger;
 
@@ -51,12 +50,16 @@ body {
     display: flex;
     align-items: center;
 }
+#projects-container-header-createproject-btn:hover {
+    background-color: rgb(72, 72, 168);
+}
 
 .project-list-item {
-   background-color: rgb(153, 125, 87);
-   color: rgb(255, 200, 123);
+    color: rgb(255, 238, 211);
+    background-color: rgb(189, 138, 66);
    font-weight: bold;
    cursor: pointer;
+   font-size: larger;
    
    height: 2em;
    padding: 1em;
@@ -67,11 +70,91 @@ body {
 }
 
 .project-list-item:hover {
-    color: rgb(153, 125, 87);
-    background-color: rgb(255, 200, 123);
+    background-color: rgb(167, 124, 64);
+    color: rgb(255, 200, 123);
 }
+
+.project-list-item-del-btn {
+    background-color: red;
+    color: white;
+
+    padding: 1em;
+    
+}
+.project-list-item-del-btn:hover {
+    background-color: rgb(173, 0, 0);
+}
+
 
 /* Task Container */
 #tasks-container-header {
     background-color: rgb(255, 219, 169);
+    font-size: larger;
+
+    padding-left: 1em;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+#tasks-container-header-createtask-btn {
+    background-color: rgb(0, 177, 15);
+    color: white;
+    cursor: pointer;
+
+    padding: 1em;
+
+    display: flex;
+    align-items: center;
+}
+
+#tasks-container-header-createtask-btn:hover {
+    background-color: rgb(31, 110, 37);
+}
+
+.task-list-item {
+   color: rgb(255, 238, 211);
+   background-color: rgb(236, 161, 55);
+   font-weight: bold;
+   cursor: pointer;
+   font-size: larger;
+   
+   height: 1em;
+   padding: 1em;
+   
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.task-list-item:hover {
+    background-color: rgb(255, 238, 211);
+    color: rgb(189, 138, 66);
+} 
+
+.task-list-item-btn-container {
+
+    display: flex;
+    align-items: center;
+}
+
+.task-list-item-detail-btn {
+    background-color: rgb(101, 101, 255);
+    color: white;
+
+    margin-right: 16px;
+    padding: 0.5em;
+}
+.task-list-item-detail-btn:hover {
+    background-color: rgb(72, 72, 168);
+}
+
+.task-list-item-delete-btn {
+    background-color: red;
+    color: white;
+
+    padding: 0.5em;
+}
+.task-list-item-delete-btn:hover {
+    background-color: rgb(173, 0, 0);
 }
