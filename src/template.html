@@ -23,7 +23,7 @@
         </div>
         
         <div id="projects-container">
-            <div class="project-list-item">
+            <!-- <div class="project-list-item">
                 <p class="project-list-item-text">Project 1</p>
                 <div class="project-list-item-del-btn">Delete Project</div>
             </div>
@@ -34,7 +34,21 @@
             <div class="project-list-item">
                 <p class="project-list-item-text">Project 3</p>
                 <div class="project-list-item-del-btn">Delete Project</div>
-            </div>
+            </div> -->
+            <form id="add-project-form">
+                <div class="project-form-input-row">
+                    <h2 id="add-project-form-head-text">Create Project</h2>
+                </div>
+                <div class="project-form-input-row">
+                    <label for="">Project Name</label><br>
+                    <input type="text" id="project-form-name-input" required autocomplete="off" maxlength="30">
+                </div>
+                <div></div>
+                <div class="project-form-input-row">
+                    <button class="add-project-form-btn cancel" type="button">Cancel</button>
+                    <button class="add-project-form-btn create" type="submit">Create</button>
+                </div>
+            </form>
         </div>
 
         <div id="tasks-container">

@@ -40,12 +40,71 @@ body {
     justify-content: space-between;
 }
 
+#add-project-form {
+    background-color: rgb(255, 219, 169);
+
+    width: calc(100% - 32px);
+    height: calc(100% - 32px);
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#add-project-form-head-text {
+    color: rgb(126, 90, 40);
+}
+
+.add-project-form-btn{
+    font-size: larger;
+    color: white;
+    
+    padding: 1em;
+    margin: 0 1em;
+    border-radius: 10%;
+    border: 0;
+}
+
+.add-project-form-btn.create {
+    background-color: rgb(0, 177, 15);
+}
+.add-project-form-btn.create:hover {
+    background-color: rgb(0, 99, 8);
+}
+
+.add-project-form-btn.cancel {
+    background-color: red;
+}
+.add-project-form-btn.cancel:hover {
+    background-color: rgb(173, 0, 0);
+}
+
+#project-form-name-input {
+    padding: 0.6em;
+    margin-top: 1em;
+
+    font-size: larger;
+}
+#project-form-name-input:focus{
+    outline: gray solid 5px;
+}
+
+.project-form-input-row {
+    text-align: center;
+}
+
+.project-form-input-row label {
+    font-size: 32px;
+}
+
 #projects-container-header-createproject-btn {
     background-color: rgb(101, 101, 255);
     color: white;
     cursor: pointer;
 
     padding: 1em;
+    border-radius: 5px;
 
     display: flex;
     align-items: center;
@@ -78,6 +137,7 @@ body {
     background-color: red;
     color: white;
 
+    border-radius: 5px;
     padding: 1em;
     
 }
@@ -103,6 +163,7 @@ body {
     cursor: pointer;
 
     padding: 1em;
+    border-radius: 5px;
 
     display: flex;
     align-items: center;
@@ -144,6 +205,7 @@ body {
 
     margin-right: 16px;
     padding: 0.5em;
+    border-radius: 5px;
 }
 .task-list-item-detail-btn:hover {
     background-color: rgb(72, 72, 168);
@@ -153,6 +215,7 @@ body {
     background-color: red;
     color: white;
 
+    border-radius: 5px;
     padding: 0.5em;
 }
 .task-list-item-delete-btn:hover {
