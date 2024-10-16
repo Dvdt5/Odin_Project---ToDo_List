@@ -1,3 +1,4 @@
+import { projectController } from "./ProjectsController";
 
 
 class Page {
@@ -26,6 +27,13 @@ class Page {
         const closeprojectFormBtn = document.getElementById("close-project-form");
         closeprojectFormBtn.addEventListener("click", ()=>this.displayProjects());
 
+        const createProjectForm = document.getElementById("add-project-form");
+        createProjectForm.addEventListener("submit", (event)=>{
+            event.preventDefault();
+            projectController.createProject();
+            this.displayProjects();
+        });
+
     }
 
     displayProjects() {
@@ -34,19 +42,20 @@ class Page {
 
         createFormBtn.style.display = "block";
 
+        const projects = projectController.getProjects();
+
         projectContainer.innerHTML = "";
-        projectContainer.innerHTML = `<div class="project-list-item">
-                <p class="project-list-item-text">Project 1</p>
-                <div class="project-list-item-del-btn">Delete Project</div>
-            </div>
-            <div class="project-list-item">
-                <p class="project-list-item-text">Project 2</p>
-                <div class="project-list-item-del-btn">Delete Project</div>
-            </div>
-            <div class="project-list-item">
-                <p class="project-list-item-text">Project 3</p>
-                <div class="project-list-item-del-btn">Delete Project</div>
-            </div>`;
+
+        projects.forEach(project => {
+            projectContainer.innerHTML += `
+                <div class="project-list-item">
+                    <p class="project-list-item-text">${project.name}</p>
+                    <div class="project-list-item-del-btn" id="${project.id}">Delete Project</div>
+                </div>
+                `;
+
+            
+        });
     }
 
     displayTaskForm() {

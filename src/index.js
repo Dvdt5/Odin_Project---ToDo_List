@@ -16,3 +16,7 @@ createFormBtn.addEventListener("click", ()=>{
 createTaskBtn.addEventListener("click", ()=>{
     pageController.displayTaskForm();
 });
+
+window.onload = function(){
+    pageController.displayProjects();
+}
