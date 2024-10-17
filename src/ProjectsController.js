@@ -3,26 +3,23 @@ import { pageController } from "./DomController";
 
 class ProjectController {
 
-    constructor(){
-        this.projectArray = JSON.parse(localStorage.getItem("Projects")) || [];
-    }
-
     createProject(){
         let project = {
             id : new Date().valueOf(),
             name : document.getElementById("project-form-name-input").value
         }
-
-        this.projectArray.push(project);
-        localStorage.setItem("Projects", JSON.stringify(this.projectArray));
+        let projectArray = JSON.parse(localStorage.getItem("Projects")) || [];
+        projectArray.push(project);
+        localStorage.setItem("Projects", JSON.stringify(projectArray));
     }
 
     getProjects(){
-        return this.projectArray;
+        return JSON.parse(localStorage.getItem("Projects")) || [];
     }
 
     deleteProject(id) {
-        let newArr = this.projectArray.filter((project)=>!project.id === id);
+        let projectArray = JSON.parse(localStorage.getItem("Projects")) || [];
+        let newArr = projectArray.filter((project)=>project.id != id);
         localStorage.setItem("Projects", JSON.stringify(newArr));
     }
 }

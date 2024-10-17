@@ -36,6 +36,35 @@ class Page {
 
     }
 
+    deleteProjectForm(project) {
+        const projectContainer = document.getElementById("projects-container");
+        const createFormBtn = document.getElementById("projects-container-header-createproject-btn");
+
+        createFormBtn.style.display = "none";
+
+        projectContainer.innerHTML = "";
+        projectContainer.innerHTML = `<form id="add-project-form">
+                <div class="project-form-input-row">
+                    <h2 class="form-head-text">Are you Sure you want to delete ${project.name}</h2>
+                </div>
+                <div class="project-form-input-row">
+                    <button id="close-project-form" class="form-btn cancel" type="button">Cancel</button>
+                    <button class="form-btn create" type="submit">Delete</button>
+                </div>
+            </form>`;
+        const closeprojectFormBtn = document.getElementById("close-project-form");
+        closeprojectFormBtn.addEventListener("click", ()=>this.displayProjects());
+
+        const createProjectForm = document.getElementById("add-project-form");
+        createProjectForm.addEventListener("submit", (event)=>{
+            event.preventDefault();
+            projectController.deleteProject(project.id);
+            this.displayProjects();
+        });
+
+
+    }
+
     displayProjects() {
         const projectContainer = document.getElementById("projects-container");
         const createFormBtn = document.getElementById("projects-container-header-createproject-btn");
@@ -47,14 +76,27 @@ class Page {
         projectContainer.innerHTML = "";
 
         projects.forEach(project => {
-            projectContainer.innerHTML += `
-            <div class="project-list-item">
-                <p class="project-list-item-text">${project.name}</p>
-                <div class="project-list-item-del-btn" id="${project.id}">Delete Project</div>
-            </div>
-            `;
+
+            const projectListItem = document.createElement("div");
+            projectListItem.classList.add("project-list-item");
+            projectListItem.id = project.id;
+
+            const projectListItemText = document.createElement("p");
+            projectListItemText.classList.add("project-list-item-text");
+            projectListItemText.textContent = project.name;
+
             
-            
+            const delBtn = document.createElement("div");
+            delBtn.classList.add("project-list-item-del-btn");
+            delBtn.addEventListener("click", ()=> {
+                this.deleteProjectForm(project);
+            });
+            delBtn.textContent = "Delete";
+
+            projectListItem.appendChild(projectListItemText);
+            projectListItem.appendChild(delBtn);
+
+            projectContainer.appendChild(projectListItem);
 
         });
     }
