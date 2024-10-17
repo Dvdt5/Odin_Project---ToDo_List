@@ -20,6 +20,11 @@ class ProjectController {
     getProjects(){
         return this.projectArray;
     }
+
+    deleteProject(id) {
+        let newArr = this.projectArray.filter((project)=>!project.id === id);
+        localStorage.setItem("Projects", JSON.stringify(newArr));
+    }
 }
 
 export const projectController = new ProjectController();

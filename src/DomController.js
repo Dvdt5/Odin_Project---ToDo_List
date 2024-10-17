@@ -48,13 +48,14 @@ class Page {
 
         projects.forEach(project => {
             projectContainer.innerHTML += `
-                <div class="project-list-item">
-                    <p class="project-list-item-text">${project.name}</p>
-                    <div class="project-list-item-del-btn" id="${project.id}">Delete Project</div>
-                </div>
-                `;
-
+            <div class="project-list-item">
+                <p class="project-list-item-text">${project.name}</p>
+                <div class="project-list-item-del-btn" id="${project.id}">Delete Project</div>
+            </div>
+            `;
             
+            
+
         });
     }
 
