@@ -45,7 +45,7 @@ class Page {
         projectContainer.innerHTML = "";
         projectContainer.innerHTML = `<form id="add-project-form">
                 <div class="project-form-input-row">
-                    <h2 class="form-head-text">Are you Sure you want to delete ${project.name}</h2>
+                    <h2 class="form-head-text">Are you sure you want to delete:<br> <span style="color:brown; font-size:32px;">${project.name}</span></h2>
                 </div>
                 <div class="project-form-input-row">
                     <button id="close-project-form" class="form-btn cancel" type="button">Cancel</button>
