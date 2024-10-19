@@ -15,11 +15,13 @@
 
         <div id="projects-container-header">
             <p id="projects-container-header-text">Projects</p>
-            <div id="projects-container-header-createproject-btn">Create Project</div>
+            <div style="display: flex;">
+                <div id="tasks-container-header-createtask-btn">Create Task</div>
+                <div id="projects-container-header-createproject-btn">Create Project</div>
+            </div>
         </div>
         <div id="tasks-container-header">
             <p id="tasks-container-header-text">Project 1</p>
-            <div id="tasks-container-header-createtask-btn">Create Task</div>
         </div>
         
         <div id="projects-container">
@@ -27,62 +29,7 @@
         </div>
 
         <div id="tasks-container">
-            <div class="task-list-item">
-                <p>Task 1</p>
-                <div class="task-list-item-btn-container">
-                    <div class="task-list-item-detail-btn">Details</div>
-                    <div class="task-list-item-delete-btn">Delete</div>
-                </div>
-            </div>
-
-            <div class="task-list-item">
-                <p>Task 2</p>
-                <div class="task-list-item-btn-container">
-                    <div class="task-list-item-detail-btn">Details</div>
-                    <div class="task-list-item-delete-btn">Delete</div>
-                </div>
-            </div>
-            <div class="task-list-item">
-                <p>Task 3</p>
-                <div class="task-list-item-btn-container">
-                    <div class="task-list-item-detail-btn">Details</div>
-                    <div class="task-list-item-delete-btn">Delete</div>
-                </div>
-            </div>
-            <!-- <form id="add-task-form">
-                <div class="task-form-input-row">
-                    <h2 class="form-head-text">Create Task</h2>
-                </div>
-                <div id="task-form-input-container">
-                    <div class="task-form-input-row">
-                        <label for="task-form-name-input">Task Name</label><br>
-                        <input type="text" id="task-form-name-input" class="gray-input-outline" required autocomplete="off">
-                    </div>
-                    <div class="task-form-input-row">
-                        <label for="task-form-select-input">Assign to a Project</label><br>
-                        <select id="task-form-select-input" class="gray-input-outline">
-                            <option>Select a Project to assign</option>
-                            <option value=""></option>
-                            <option value=""></option>
-                        </select>
-                    </div>
-                    <div class="task-form-input-row">
-                        <label for="task-form-detail-input">Task Details</label><br>
-                        <textarea id="task-form-detail-input" class="gray-input-outline" rows="3"></textarea>
-                    </div>
-                    <div class="task-form-input-row">
-                        <label>Task Importance</label><br><br>
-                        <label for="importance-!"><input type="radio" id="importance-!" name="task-importance">!</label><br><br>
-                        <label for="importance-!!"><input type="radio" id="importance-!!" name="task-importance">!!</label><br><br>
-                        <label for="importance-!!!"><input type="radio" id="importance-!!!" name="task-importance">!!!</label>
-                    </div>
-                </div>
-                <div></div>
-                <div class="project-form-input-row">
-                    <button class="form-btn cancel" type="button">Cancel</button>
-                    <button class="form-btn create" type="submit">Create</button>
-                </div>
-            </form> -->
+            
         </div>
     </div>
 </body>

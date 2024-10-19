@@ -227,7 +227,7 @@ body {
     background-color: rgb(255, 219, 169);
 
     width: calc(100% - 32px);
-    height: calc(100% - 32px);
+    height: fit-content;
     padding: 16px;
 
     display: flex;

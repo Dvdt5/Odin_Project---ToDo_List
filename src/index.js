@@ -19,4 +19,5 @@ createTaskBtn.addEventListener("click", ()=>{
 
 window.onload = function(){
     pageController.displayProjects();
+    pageController.displayTasks(0);
 }
