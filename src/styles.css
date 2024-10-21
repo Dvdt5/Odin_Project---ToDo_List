@@ -190,8 +190,7 @@ body {
 }
 
 .task-list-item:hover {
-    background-color: rgb(255, 238, 211);
-    color: rgb(189, 138, 66);
+    color: rgb(255, 205, 135);
 } 
 
 .task-list-item-btn-container {
@@ -227,6 +226,7 @@ body {
     background-color: rgb(255, 219, 169);
 
     width: calc(100% - 32px);
+    min-height: calc(100% - 32px);
     height: fit-content;
     padding: 16px;
 

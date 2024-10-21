@@ -1,4 +1,5 @@
 import { pageController } from "./DomController";
+import { taskController } from "./TasksConroller";
 
 
 class ProjectController {
@@ -21,6 +22,12 @@ class ProjectController {
         let projectArray = JSON.parse(localStorage.getItem("Projects")) || [];
         let newArr = projectArray.filter((project)=>project.id != id);
         localStorage.setItem("Projects", JSON.stringify(newArr));
+
+        let tasksArr = taskController.getTasks();
+        tasksArr = tasksArr.filter((task)=>task.assignedProjectId != id);
+        
+        localStorage.setItem("Tasks", JSON.stringify(tasksArr));
+
     }
 }
 

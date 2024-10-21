@@ -65,6 +65,7 @@ class Page {
             event.preventDefault();
             projectController.deleteProject(project.id);
             this.displayProjects();
+            this.displayTasks(0);
         });
 
 
@@ -100,7 +101,8 @@ class Page {
             
             const delBtn = document.createElement("div");
             delBtn.classList.add("project-list-item-del-btn");
-            delBtn.addEventListener("click", ()=> {
+            delBtn.addEventListener("click", (event)=> {
+                event.stopPropagation()
                 this.deleteProjectForm(project);
             });
             delBtn.textContent = "Delete";
@@ -179,27 +181,51 @@ class Page {
         const taskContainer = document.getElementById("tasks-container");
         const createTaskBtn = document.getElementById("tasks-container-header-createtask-btn");
         const createFormBtn = document.getElementById("projects-container-header-createproject-btn");
+        const taskHeaderText = document.getElementById("tasks-container-header-text");
 
         createFormBtn.style.display = "block";
-
         createTaskBtn.style.display = "block";
 
+        taskContainer.innerHTML = "";
+
         if (project == 0) {
-            taskContainer.innerHTML = "Select a project to see tasks";    
+            const noProjectText = document.createElement("p");
+            noProjectText.textContent = "Select a project to see its tasks";
+            noProjectText.style.fontSize = "26px";
+            noProjectText.style.textAlign = "center";
+
+            taskHeaderText.textContent = "No Project Selected";
+
+            taskContainer.appendChild(noProjectText);    
         } else {
             
         let tasksArr = taskController.getTasks();
         tasksArr = tasksArr.filter((task)=>task.assignedProjectId == project.id);
-        console.log(tasksArr)
+        taskHeaderText.textContent = project.name;
+        
+        
+        if (tasksArr.length == 0) {
+            const noProjectText = document.createElement("p");
+            noProjectText.textContent = "No task assigned to this project";
+            noProjectText.style.fontSize = "26px";
+            noProjectText.style.textAlign = "center";
 
-
-        taskContainer.innerHTML = "";
+            taskContainer.appendChild(noProjectText);  
+        }
+        else
+        {
         tasksArr.forEach((task)=>{
             const taskListItem = document.createElement("div");
             taskListItem.classList.add("task-list-item");
 
             const taskListItemText = document.createElement("p");
             taskListItemText.textContent = task.name;
+
+            const taskListItemStatus = document.createElement("p");
+            taskListItemStatus.style.padding = "0.5em";
+            taskListItemStatus.style.borderRadius = "10px";
+            taskListItemStatus.style.backgroundColor = task.isDone ? "green" : "red";
+            taskListItemStatus.textContent = task.isDone ? "Done" : "Not Done";
 
             const taskListItemBtnContainer = document.createElement("div");
             taskListItemBtnContainer.classList.add("task-list-item-btn-container");
@@ -213,8 +239,10 @@ class Page {
             const taskListItemDelBtn = document.createElement("div");
             taskListItemDelBtn.classList.add("task-list-item-delete-btn");
             taskListItemDelBtn.textContent = "Delete";
+            taskListItemDelBtn.addEventListener("click",()=>this.deleteTaskForm(task));
 
             taskListItem.appendChild(taskListItemText);
+            taskListItem.appendChild(taskListItemStatus);
 
             taskListItemBtnContainer.appendChild(taskListItemDetailBtn);
             taskListItemBtnContainer.appendChild(taskListItemDelBtn);
@@ -224,6 +252,36 @@ class Page {
             taskContainer.appendChild(taskListItem);
         });           
         }
+        }
+    }
+
+    deleteTaskForm(task) {
+        const tasksContainer = document.getElementById("tasks-container");
+        const createFormBtn = document.getElementById("projects-container-header-createproject-btn");
+        const createTaskBtn = document.getElementById("tasks-container-header-createtask-btn");
+
+        createTaskBtn.style.display = "none";
+        createFormBtn.style.display = "none";
+
+        tasksContainer.innerHTML = "";
+        tasksContainer.innerHTML = `<form id="add-task-form">
+                <div class="project-form-input-row">
+                    <h2 class="form-head-text">Are you sure you want to delete:<br> <span style="color:brown; font-size:32px;">${task.name}</span></h2>
+                </div>
+                <div class="project-form-input-row">
+                    <button id="close-task-form" class="form-btn cancel" type="button">Cancel</button>
+                    <button class="form-btn create" type="submit">Delete</button>
+                </div>
+            </form>`;
+        const closetaskFormBtn = document.getElementById("close-task-form");
+        closetaskFormBtn.addEventListener("click", ()=>this.displayTasks(0));
+
+        const createTaskForm = document.getElementById("add-task-form");
+        createTaskForm.addEventListener("submit", (event)=>{
+            event.preventDefault();
+            taskController.deleteTask(task.id);
+            this.displayTasks(0);
+        });
     }
 }
 
