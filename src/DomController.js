@@ -149,7 +149,7 @@ class Page {
                     </div>
                     <div class="task-form-input-row">
                         <label for="task-form-detail-input">Task Details</label><br>
-                        <textarea id="task-form-detail-input" class="gray-input-outline" rows="3"></textarea>
+                        <textarea id="task-form-detail-input" class="gray-input-outline" rows="3" maxlength="128"></textarea>
                     </div>
                     <div class="task-form-input-row">
                         <label>Task Importance</label><br><br>
@@ -234,6 +234,7 @@ class Page {
             const taskListItemDetailBtn = document.createElement("div");
             taskListItemDetailBtn.classList.add("task-list-item-detail-btn");
             taskListItemDetailBtn.textContent = "Details";
+            taskListItemDetailBtn.addEventListener("click", ()=>this.taskDetails(task));
 
 
             const taskListItemDelBtn = document.createElement("div");
@@ -282,6 +283,109 @@ class Page {
             taskController.deleteTask(task.id);
             this.displayTasks(0);
         });
+    }
+
+    taskDetails(task){
+        const tasksContainer = document.getElementById("tasks-container");
+        const createFormBtn = document.getElementById("projects-container-header-createproject-btn");
+        const createTaskBtn = document.getElementById("tasks-container-header-createtask-btn");
+
+        createTaskBtn.style.display = "none";
+        createFormBtn.style.display = "none";
+
+        tasksContainer.innerHTML = "";
+        tasksContainer.innerHTML = `<div id="add-task-form">
+            <div  id="task-form-input-container">
+                <div class="project-form-input-row">
+                    <h2 class="form-head-text">Task Name:<br><span style="color:brown; font-size:24px;">${task.name}</span></h2>
+                </div>
+                <div class="project-form-input-row" style=" word-wrap: break-word;  overflow-x: hidden;">
+                    <h2 class="form-head-text">Details:<br><span style="color:brown; font-size:24px;">${task.detail}</span></h2>
+                </div>
+                <div class="project-form-input-row">
+                    <h2 class="form-head-text">Importance: <br><span style="color:brown; font-size:24px;">${task.importance}</span></h2>
+                </div>
+                <div class="project-form-input-row">
+                    <h2 class="form-head-text"><br> <span style="border-radius:10px; padding:0.5em; color:white;background-color:${task.isDone ? "green" : "red"}; font-size:24px;">${task.isDone ? "Done" : "Not Done"}</span></h2>
+                </div>
+            </div>
+                <div class="project-form-input-row">
+                    <button id="close-task-form" class="form-btn cancel" type="button">Cancel</button>
+                    <button class="form-btn create" id="update-task-btn">Update</button>
+                </div>
+            </div>`;
+        const closetaskFormBtn = document.getElementById("close-task-form");
+        closetaskFormBtn.addEventListener("click", ()=>this.displayTasks(0));
+
+        const updateTaskBtn = document.getElementById("update-task-btn");
+        updateTaskBtn.addEventListener("click", ()=>{
+            this.displayTaskUpdateForm(task);
+        });
+
+    }
+
+    displayTaskUpdateForm(task){
+        const taskContainer = document.getElementById("tasks-container");
+        const createTaskBtn = document.getElementById("tasks-container-header-createtask-btn");
+        const createFormBtn = document.getElementById("projects-container-header-createproject-btn");
+
+        createFormBtn.style.display = "none";
+        createTaskBtn.style.display = "none";
+        
+        let selectProject = "";
+
+        projectController.getProjects().forEach((project)=>{
+            selectProject += `<option value="${project.id}">${project.name}</option>`;
+
+        });
+
+        taskContainer.innerHTML = "";
+        taskContainer.innerHTML = ` <form id="add-task-form">
+                <div class="task-form-input-row">
+                    <h2 class="form-head-text">Update Task</h2>
+                </div>
+                <div id="task-form-input-container">
+                    <div class="task-form-input-row">
+                        <label for="task-form-name-input">Task Name</label><br>
+                        <input value="${task.name}" type="text" id="task-form-name-input" class="gray-input-outline" required autocomplete="off">
+                    </div>
+                    <div class="task-form-input-row">
+                        
+                        <select id="task-form-select-input" class="gray-input-outline" required>
+                            <option disabled selected value>Select Task Status</option>
+                            <option value="done">Task is Done</option>
+                            <option value="notDone">Task is in progress</option>
+                        </select>
+                    </div>
+                    <div class="task-form-input-row">
+                        <label for="task-form-detail-input">Task Details</label><br>
+                        <textarea  id="task-form-detail-input" class="gray-input-outline" rows="3" maxlength="128">${task.detail}</textarea>
+                    </div>
+                    <div class="task-form-input-row">
+                        <label>Task Importance</label><br><br>
+                        <label for="importance-!"><input required type="radio" id="importance-!" name="task-importance">!</label><br><br>
+                        <label for="importance-!!"><input type="radio" id="importance-!!" name="task-importance">!!</label><br><br>
+                        <label for="importance-!!!"><input type="radio" id="importance-!!!" name="task-importance">!!!</label>
+                    </div>
+                </div>
+                <div></div>
+                <div class="project-form-input-row">
+                    <button id="close-task-form" class="form-btn cancel" type="button">Cancel</button>
+                    <button class="form-btn create" type="submit">Update</button>
+                </div>
+            </form>`;
+
+        const closeTaskFormBtn = document.getElementById("close-task-form");
+        closeTaskFormBtn.addEventListener("click", ()=>this.displayTasks(0));
+
+        const createTaskForm = document.getElementById("add-task-form");
+        createTaskForm.addEventListener("submit", (event)=>{
+            event.preventDefault();
+            taskController.updateTask(task.id);
+            this.displayProjects();
+            this.displayTasks(0);
+        });
+
     }
 }
 
